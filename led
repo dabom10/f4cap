@@ -1,0 +1,10 @@
+from gpiozero import LED       //gpio모듈에서 LED 불러오기
+from time import sleep        //time모듈이서 sleep함수 불러오기 
+
+led = LED(4)               // LED객체 생성
+
+while True:                 //반복
+    led.on()                //led 켜기 함수
+    sleep(1)                // 1초 대기 
+    led.off()             // led 끄기 함수
+    sleep(1)   
