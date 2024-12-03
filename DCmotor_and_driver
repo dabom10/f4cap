@@ -1,0 +1,39 @@
+from gpiozero import PWMOutputDevice, DigitalOutputDevice
+from time import sleep
+
+
+in1 = PWMOutputDevice(23)  
+in2 = PWMOutputDevice(24)  
+
+def motor_forward(speed=1.0):
+    print("Motor: Forward")
+    in1.value = speed  
+    in2.value = 0     
+
+def motor_backward(speed=1.0):
+    print("Motor: Backward")
+    in1.value = 0      
+    in2.value = speed  
+
+def motor_stop():
+    print("Motor: Stop")
+    in1.value = 0
+    in2.value = 0
+
+if __name__ == "__main__":
+    try:
+        print("Testing motor...")
+        motor_forward(0.5)  
+        sleep(2)
+        motor_stop()
+        sleep(1)
+        
+        motor_backward(0.75) 
+        sleep(2)
+        motor_stop()
+        sleep(1)
+        
+    except KeyboardInterrupt:
+        print("Exiting...")
+    finally:
+        motor_stop()
